@@ -1,6 +1,6 @@
 import openai
 from openai import OpenAI
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="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")
 
 def askChatGPT(question):
     prompt = question
@@ -11,8 +11,8 @@ def askChatGPT(question):
             {"role": "user", "content": f"{prompt}"}
         ],
     )
-    message = completions.choices[0].message
-    print(message)
+    message = completions.choices[0].message.content.strip()
+    return message
 
-askChatGPT("请告诉我中国的国土面积有多大")
-print("Hello World!")
+answer = askChatGPT("Please reply that is a test")
+print(answer)
