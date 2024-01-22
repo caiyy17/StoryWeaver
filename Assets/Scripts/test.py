@@ -1,6 +1,6 @@
 import openai
 from openai import OpenAI
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="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")
 
 def askChatGPT(question):
     prompt = question
