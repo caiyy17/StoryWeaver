@@ -2,6 +2,8 @@ import sys
 import requests
 import json
 
+answerPath = 'Assets/Scripts/answer.json'
+
 def send_question(question):
     response = requests.post('http://127.0.0.1:5000/ask', json={'question': question})
     return response.json()
@@ -9,6 +11,11 @@ def send_question(question):
 if __name__ == "__main__":
     # first parameter is the question
     # read from the command line
-    parameter = sys.argv[1]
+    if len(sys.argv) < 2:
+        parameter = 'Hello'
+    else:
+        parameter = sys.argv[1]
     answer = send_question(parameter)
-    print(answer['answer'])
+    with open(answerPath, 'w') as file:
+        json.dump(answer, file)
+    print("Finished")

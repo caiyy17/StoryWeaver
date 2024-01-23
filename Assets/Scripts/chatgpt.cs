@@ -11,6 +11,8 @@ public class chatgpt : MonoBehaviour
     PythonEnvironment env = new PythonEnvironment();
     string pythonPath;
     string pythonScript;
+    string resultPath;
+    Answer ans = new Answer();
     ProcessStartInfo start = new ProcessStartInfo();
 
     void Start()
@@ -19,6 +21,7 @@ public class chatgpt : MonoBehaviour
         env = JsonUtility.FromJson<PythonEnvironment>(jsonFromFile);
         pythonPath = env.PythonAddress;
         pythonScript = env.ScriptAddress;
+        resultPath = env.ResultAddress;
 
         start.FileName = pythonPath;
         start.Arguments = pythonScript + " \"" + question + "\"";
@@ -38,5 +41,8 @@ public class chatgpt : MonoBehaviour
                 UnityEngine.Debug.Log(result);
             }
         }
+        string jsonFromFile = File.ReadAllText(resultPath);
+        ans = JsonUtility.FromJson<Answer>(jsonFromFile);
+        UnityEngine.Debug.Log("answer: " + ans.answer);
     }
 }

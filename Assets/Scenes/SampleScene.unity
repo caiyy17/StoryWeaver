@@ -148,11 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a2901cbf4310054f8fc1e957feb3a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pythonPath: C:/Users/CYY/miniforge3/envs/chatgpt/python.exe
-  pythonScript: C:/Users/CYY/Documents/Unity/StoryWeaver/Assets/Scripts/test.py
-  env:
-    PythonAddress: C:/Users/CYY/miniforge3/envs/chatgpt/python.exe
-    ScriptAddress: C:/Users/CYY/Documents/Unity/StoryWeaver/Assets/Scripts/test.py
+  question: "\u4F60\u662F\u8C01"
+  path: Assets/Scripts/env.json
 --- !u!4 &108783970
 Transform:
   m_ObjectHideFlags: 0
