@@ -11,6 +11,7 @@ public class chatgpt : MonoBehaviour
     PythonEnvironment env = new PythonEnvironment();
     string pythonPath;
     string pythonScript;
+    ProcessStartInfo start = new ProcessStartInfo();
 
     void Start()
     {
@@ -19,12 +20,16 @@ public class chatgpt : MonoBehaviour
         pythonPath = env.PythonAddress;
         pythonScript = env.ScriptAddress;
 
-        ProcessStartInfo start = new ProcessStartInfo();
         start.FileName = pythonPath;
         start.Arguments = pythonScript + " \"" + question + "\"";
         start.UseShellExecute = false;
         start.RedirectStandardOutput = true;
+        AskGPT(question);
+    }
 
+    void AskGPT(string prompt)
+    {
+        start.Arguments = pythonScript + " \"" + prompt + "\"";
         using(Process process = Process.Start(start))
         {
             using(StreamReader reader = process.StandardOutput)
