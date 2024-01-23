@@ -75,6 +75,6 @@ crashlytics-build.properties
 .DS_Store?
 .idea/
 
-secrets.py
+secrets_chatgpt.py
 env.json
 __pycache__
