@@ -1,3 +1,4 @@
+import sys
 from openai import OpenAI
 from secrets import *
 client = OpenAI(api_key=API_KEY)
@@ -14,5 +15,9 @@ def askChatGPT(question):
     message = completions.choices[0].message.content.strip()
     return message
 
-answer = askChatGPT("Please reply that is a test")
-print(answer)
+if __name__ == "__main__":
+    # first parameter is the question
+    # read from the command line
+    parameter = sys.argv[1]
+    answer = askChatGPT(parameter)
+    print(answer)
