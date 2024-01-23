@@ -6,10 +6,19 @@ using UnityEngine;
 
 public class chatgpt : MonoBehaviour
 {
-    public string pythonPath = "";
-    public string pythonScript = "";
+    
+    public string path = "Assets/Scripts/env.json";
+    PythonEnvironment env = new PythonEnvironment();
+    string pythonPath;
+    string pythonScript;
+    
     void Start()
     {
+        string jsonFromFile = File.ReadAllText(path);
+        env = JsonUtility.FromJson<PythonEnvironment>(jsonFromFile);
+        pythonPath = env.PythonAddress;
+        pythonScript = env.ScriptAddress;
+
         ProcessStartInfo start = new ProcessStartInfo();
         start.FileName = pythonPath; // 或者 python 的完整路径
         start.Arguments = pythonScript; // Python脚本的路径
