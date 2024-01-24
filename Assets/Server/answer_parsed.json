@@ -1,85 +1,64 @@
 {
-    "Title": "The Protector's Path",
-    "Characters": ["David - The Sword Master", "Queen Marianne", "Prince Arnold - The Spiteful", "Lady Beatrice - The Fair Maiden", "The Soothsayer", "Villagers"],
+    "Title": "Blade of Destiny: The Path of the Sword Master",
+    "Characters": ["Edward", "Lilian", "The Sword Master", "The Dark One", "Villagers"],
     "Acts": [
         {
-            "act_title": "The Prodigy",
+            "act_title": "The Call of the Sword",
             "scenes": [
                 {
                     "scene_index": 1,
-                    "scene_title": "The Master's Return",
-                    "stage_setting": "The village's central square, near David's simple abode.",
-                    "involved_characters": ["David - The Sword Master", "Villagers"],
-                    "plot": "David returns from a distant journey, surprising the villagers with his masterful sword skills."
+                    "scene_title": "The Ordinary Village",
+                    "stage_setting": "A peaceful village",
+                    "involved_characters": ["Edward", "Villagers"],
+                    "plot": "Edward, a common villager, leads a simple life but dreams of something more."
                 },
                 {
                     "scene_index": 2,
-                    "scene_title": "The Soothsayer's Vision",
-                    "stage_setting": "The cavernous dwelling of the Soothsayer.",
-                    "involved_characters": ["David - The Sword Master", "The Soothsayer"],
-                    "plot": "The Soothsayer warns David of looming danger involving the royal household."
-                },
-                {
-                    "scene_index": 3,
-                    "scene_title": "Beatrice’s First Glance",
-                    "stage_setting": "A tranquil lake by the outskirts of the village.",
-                    "involved_characters": ["David - The Sword Master", "Lady Beatrice - The Fair Maiden"],
-                    "plot": "David saves Lady Beatrice from a rogue thief. Their paths intertwine."
+                    "scene_title": "The Unexpected Summons",
+                    "stage_setting": "At the village tavern",
+                    "involved_characters": ["Edward", "Sword Master"],
+                    "plot": "Edward encounters the mysterious Sword Master who reveals Edward's destiny as the potential next Sword Master."
                 }
             ]
         },
         {
-            "act_title": "The Turmoil",
+            "act_title": "The Trials of Destiny",
             "scenes": [
                 {
                     "scene_index": 1,
-                    "scene_title": "Regal Invitation",
-                    "stage_setting": "The grandeur of Queen Marianne's palace",
-                    "involved_characters": ["David - The Sword Master", "Queen Marianne", "Prince Arnold - The Spiteful"],
-                    "plot": "David is summoned by the queen to serve as the royal protector."
+                    "scene_title": "The Journey Begins",
+                    "stage_setting": "On a long, difficult trail",
+                    "involved_characters": ["Edward", "Lilian"],
+                    "plot": "Edward embarks on his journey, and on the way meets Lilian, who becomes a loyal ally."
                 },
                 {
                     "scene_index": 2,
-                    "scene_title": "Arnold’s Strategy",
-                    "stage_setting": "The shady, secret crevices of the castle.",
-                    "involved_characters": ["Prince Arnold - The Spiteful"],
-                    "plot": "Prince Arnold's resentment towards David escalates into vindictive plotting."
-                },
-                {
-                    "scene_index": 3,
-                    "scene_title": "An Aristocratic Ball",
-                    "stage_setting": "The resplendent ballroom abundant with royal guests.",
-                    "involved_characters": ["David - The Sword Master", "Lady Beatrice - The Fair Maiden"],
-                    "plot": "As the night progresses, so does the romance between David and Lady Beatrice."
+                    "scene_title": "The Testing Storm",
+                    "stage_setting": "In a ferocious storm",
+                    "involved_characters": ["Edward", "Lilian", "Sword Master"],
+                    "plot": "Edward has to face the challenges by the Sword Master, proving his strength and conviction."
                 }
             ]
         },
         {
-            "act_title": "The Resolution",
+            "act_title": "The Final Battle",
             "scenes": [
                 {
                     "scene_index": 1,
-                    "scene_title": "The Unveiling",
-                    "stage_setting": "The kingdom's training area, preparing for war",
-                    "involved_characters": ["David - The Sword Master", "Prince Arnold - The Spiteful"],
-                    "plot": "Prince Arnold publicly challenges David to a duel and reveals his vengeful scheme."
+                    "scene_title": "The Dark One Appears",
+                    "stage_setting": "A desolate battlefield",
+                    "involved_characters": ["Edward", "Lilian", "The Dark One"],
+                    "plot": "Edward and Lilian confront The Dark One, leading to a major conflict."
                 },
                 {
                     "scene_index": 2,
-                    "scene_title": "The Clash",
-                    "stage_setting": "The grim battlefield wreathed in the tension of incoming war",
-                    "involved_characters": ["David - The Sword Master", "Prince Arnold - The Spiteful"],
-                    "plot": "David, even with a significant injury, bravely combats Prince Arnold, affirming his position."
-                },
-                {
-                    "scene_index": 3,
-                    "scene_title": "The Ascendancy",
-                    "stage_setting": "The jubilant core of the village, filled with rejoicing villagers.",
-                    "involved_characters": ["David - The Sword Master", "Queen Marianne", "Lady Beatrice - The Fair Maiden"],
-                    "plot": "Victorious and vindicated, David is acknowledged as the kingdom's saviour and wins Lady Beatrice's love."
+                    "scene_title": "Edward's Triumph",
+                    "stage_setting": "On the battlefield, dawn breaking",
+                    "involved_characters": ["Edward", "Lilian", "The Dark One", "Sword Master"],
+                    "plot": "Edward, with his mastery of the sword and spirit, finally defeats The Dark One."
                 }
             ]
         }
     ],
-    "Epilogue": "David – The Sword Master assumes his rightful place as the Protector of the Kingdom. With his courage and integrity, he ushers in a new era of peace and prosperity – forever intertwined with his love, Lady Beatrice."
+    "Epilogue": "Edward returns to his village as the new Sword Master, promising to protect it from all harm. He has come full circle, from a dreamer to a doer, and although he knows his life will never be the same again, he feels ready for anything that may come his way."
 }
