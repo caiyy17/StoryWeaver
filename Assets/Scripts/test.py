@@ -5,7 +5,7 @@ import json
 answerPath = 'Assets/Scripts/answer.json'
 
 def send_question(question):
-    response = requests.post('http://127.0.0.1:5000/ask', json={'question': question})
+    response = requests.post('http://127.0.0.1:5050/ask', json={'question': question})
     return response.json()
 
 if __name__ == "__main__":
