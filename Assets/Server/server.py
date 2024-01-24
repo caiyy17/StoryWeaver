@@ -3,6 +3,11 @@ import json
 app = Flask(__name__)
 
 import sys
+import requests
+import base64
+from io import BytesIO
+from PIL import Image
+
 from openai import OpenAI
 from secrets_chatgpt import *
 client = OpenAI(api_key=API_KEY)
@@ -27,9 +32,16 @@ def tts_openai(prompt):
     return response
 
 def generate_image(prompt):
-    response = None
-    return "pass"
-
+    response = client.images.generate(
+    model="dall-e-3",
+    prompt=prompt,
+    size="1024x1024",
+    quality="standard",
+    n=1,
+    response_format = "b64_json"
+    )
+    image = response.data[0].b64_json
+    return image
 
 @app.route('/ask', methods=['POST'])
 def ask():
@@ -57,6 +69,9 @@ def image():
     data = request.json
     prompt = data['prompt']
     image = generate_image(prompt)
+    image = base64.b64decode(image)
+    image = Image.open(BytesIO(image))
+    image.save('answer.png')
 
     return jsonify({'answer': "finished image"})
 

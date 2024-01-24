@@ -28,6 +28,7 @@ public class chatgpt : MonoBehaviour
         start.RedirectStandardOutput = true;
         string temp = AskGPT(question);
         TTS(temp);
+        GenerateImage(temp);
     }
 
     string AskGPT(string prompt)
