@@ -1,8 +1,8 @@
 import sys
 import requests
 
-def send_question(prompt):
-    response = requests.post('http://127.0.0.1:5050/ask', json={'prompt': prompt})
+def send_question(prompt, id = 0):
+    response = requests.post('http://127.0.0.1:5050/ask', json={'prompt': prompt, 'id': id})
     return response.json()
 
 def tts(prompt):
@@ -18,7 +18,7 @@ if __name__ == "__main__":
     # read from the command line
     if len(sys.argv) < 3:
         prompt = 'Hello'
-        answer = send_question(prompt)
+        answer = send_question(prompt, 1)
     elif sys.argv[1] == "ask":
         prompt = sys.argv[2]
         answer = send_question(prompt)
