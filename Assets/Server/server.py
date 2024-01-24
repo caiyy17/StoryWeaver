@@ -3,6 +3,7 @@ import json
 app = Flask(__name__)
 
 import sys
+import os
 import requests
 import base64
 from io import BytesIO
@@ -12,15 +13,21 @@ from openai import OpenAI
 from secrets_chatgpt import *
 client = OpenAI(api_key=API_KEY)
 
-def mock_chatgpt(prompt):
+def mock_chatgpt(prompt, id=0):
+    if os.path.exists(f"history_{id}.json"):
+        with open(f"history_{id}.json", 'r', encoding='utf-8') as file:
+            history = json.load(file)
+    else:
+        history = [{"role": "system", "content": "You are a helpful assistant."}]
+    history.append({"role": "user", "content": f"{prompt}"})
     response = client.chat.completions.create(
         model="gpt-4",
-        messages=[
-            # {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": f"{prompt}"}
-        ],
+        messages=history
     )
     response = response.choices[0].message.content.strip()
+    history.append({"role": "assistant", "content": f"{response}"})
+    with open(f"history_{id}.json", 'w', encoding='utf-8') as file:
+        json.dump(history, file, ensure_ascii=False)
     return response
 
 def tts_openai(prompt):
