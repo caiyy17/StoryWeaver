@@ -19,15 +19,26 @@ def mock_chatgpt(question):
     message = completions.choices[0].message.content.strip()
     return message
 
+def tts_openai(text):
+    response = client.audio.speech.create(
+        model="tts-1",
+        voice="alloy",
+        input=text
+    )
+    return response
+
 @app.route('/ask', methods=['POST'])
 def ask():
     data = request.json
     question = data['question']
     answer = mock_chatgpt(question)
+    audio = tts_openai(answer)
+    print(answer)
 
     # 将回答写入JSON文件
-    # with open('answers.json', 'w') as file:
-    #     json.dump({'question': question, 'answer': answer}, file)
+    with open('answer.json', 'w', encoding='utf-8') as file:
+        json.dump({'question': question, 'answer': answer}, file, ensure_ascii=False)
+    audio.stream_to_file('answer.mp3')
 
     return jsonify({'answer': answer})
 

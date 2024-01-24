@@ -16,6 +16,6 @@ if __name__ == "__main__":
     else:
         parameter = sys.argv[1]
     answer = send_question(parameter)
-    with open(answerPath, 'w') as file:
-        json.dump(answer, file)
+    with open(answerPath, 'w', encoding='utf-8') as file:
+        json.dump(answer, file, ensure_ascii=False)
     print("Finished")
