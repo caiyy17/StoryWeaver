@@ -24,15 +24,15 @@ public class chatgpt : MonoBehaviour
         resultPath = env.ResultAddress;
 
         start.FileName = pythonPath;
-        start.Arguments = pythonScript + " \"" + question + "\"";
         start.UseShellExecute = false;
         start.RedirectStandardOutput = true;
-        AskGPT(question);
+        string temp = AskGPT(question);
+        TTS(temp);
     }
 
-    void AskGPT(string prompt)
+    string AskGPT(string prompt)
     {
-        start.Arguments = pythonScript + " \"" + prompt + "\"";
+        start.Arguments = pythonScript + " ask \"" + prompt + "\"";
         using(Process process = Process.Start(start))
         {
             using(StreamReader reader = process.StandardOutput)
@@ -41,8 +41,35 @@ public class chatgpt : MonoBehaviour
                 UnityEngine.Debug.Log(result);
             }
         }
-        string jsonFromFile = File.ReadAllText(resultPath);
+        string jsonFromFile = File.ReadAllText(resultPath + ".json");
         ans = JsonUtility.FromJson<Answer>(jsonFromFile);
         UnityEngine.Debug.Log("answer: " + ans.answer);
+        return ans.answer;
+    }
+
+    void TTS(string prompt)
+    {
+        start.Arguments = pythonScript + " tts \"" + prompt + "\"";
+        using(Process process = Process.Start(start))
+        {
+            using(StreamReader reader = process.StandardOutput)
+            {
+                string result = reader.ReadToEnd();
+                UnityEngine.Debug.Log(result);
+            }
+        }
+    }
+
+    void GenerateImage(string prompt)
+    {
+        start.Arguments = pythonScript + " image \"" + prompt + "\"";
+        using(Process process = Process.Start(start))
+        {
+            using(StreamReader reader = process.StandardOutput)
+            {
+                string result = reader.ReadToEnd();
+                UnityEngine.Debug.Log(result);
+            }
+        }
     }
 }

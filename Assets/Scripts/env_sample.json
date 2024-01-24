@@ -1,1 +1,1 @@
-{ "PythonAddress": "path/to/python.exe", "ScriptAddress": "Assets/Scripts/test.py", "ResultAddress": "Assets/Scripts/answer.json" }
+{ "PythonAddress": "path/to/python.exe", "ScriptAddress": "Assets/Scripts/client.py", "ResultAddress": "Assets/Server/answer" }
