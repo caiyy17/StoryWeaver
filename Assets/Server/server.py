@@ -4,6 +4,7 @@ app = Flask(__name__)
 
 import sys
 import os
+import re
 import requests
 import base64
 from io import BytesIO
@@ -12,16 +13,24 @@ from PIL import Image
 from openai import OpenAI
 from secrets_chatgpt import *
 client = OpenAI(api_key=API_KEY)
+model = "gpt-4"
+
+def clean_json_string(s):
+    # 移除对象内多余的逗号
+    s = re.sub(r',\s*}', '}', s)
+    # 移除数组内多余的逗号
+    s = re.sub(r',\s*]', ']', s)
+    return s
 
 def mock_chatgpt(prompt, id=0):
     if os.path.exists(f"history_{id}.json"):
         with open(f"history_{id}.json", 'r', encoding='utf-8') as file:
             history = json.load(file)
     else:
-        history = [{"role": "system", "content": "You are a helpful assistant."}]
+        history = []
     history.append({"role": "user", "content": f"{prompt}"})
     response = client.chat.completions.create(
-        model="gpt-4",
+        model=model,
         messages=history
     )
     response = response.choices[0].message.content.strip()
@@ -82,6 +91,23 @@ def image():
     image.save('answer.png')
 
     return jsonify({'answer': "finished image"})
+
+@app.route('/parse', methods=['POST'])
+def parse():
+    data = request.json
+    prompt = data['prompt'].replace("\n", "").replace("\t", "")
+    # print(prompt)
+    pattern = "```json(.*?)```"
+    prompt = re.findall(pattern, prompt)[0]
+    prompt = prompt.replace("\\", "")
+    prompt = clean_json_string(prompt)
+    
+    parsed_json = json.loads(prompt)
+    
+    with open('answer_parsed.json', 'w', encoding='utf-8') as file:
+        json.dump(parsed_json, file, ensure_ascii=False)
+
+    return jsonify({'answer': "finished parse"})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5050)
