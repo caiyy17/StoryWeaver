@@ -54,7 +54,8 @@ def generate_image(prompt):
 def ask():
     data = request.json
     prompt = data['prompt']
-    answer = mock_chatgpt(prompt)
+    id = data['id']
+    answer = mock_chatgpt(prompt, id)
 
     # 将回答写入JSON文件
     with open('answer.json', 'w', encoding='utf-8') as file:
