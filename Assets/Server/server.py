@@ -33,7 +33,6 @@ def ask():
     question = data['question']
     answer = mock_chatgpt(question)
     audio = tts_openai(answer)
-    print(answer)
 
     # 将回答写入JSON文件
     with open('answer.json', 'w', encoding='utf-8') as file:
