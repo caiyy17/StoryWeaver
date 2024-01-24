@@ -27,7 +27,7 @@ def tts_openai(prompt):
     return response
 
 def generate_image(prompt):
-    response = null
+    response = None
     return "pass"
 
 
@@ -41,7 +41,7 @@ def ask():
     with open('answer.json', 'w', encoding='utf-8') as file:
         json.dump({'prompt': prompt, 'answer': answer}, file, ensure_ascii=False)
 
-    return "finished ask"
+    return jsonify({'answer': "finished ask"})
 
 @app.route('/tts', methods=['POST'])
 def tts():
@@ -50,7 +50,7 @@ def tts():
     audio = tts_openai(prompt)
 
     audio.stream_to_file('answer.mp3')
-    return "finished tts"
+    return jsonify({'answer': "finished tts"})
 
 @app.route('/image', methods=['POST'])
 def image():
@@ -58,7 +58,7 @@ def image():
     prompt = data['prompt']
     image = generate_image(prompt)
 
-    return "finished image"
+    return jsonify({'answer': "finished image"})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5050)
